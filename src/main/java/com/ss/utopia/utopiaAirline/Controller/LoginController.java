@@ -23,6 +23,11 @@ public class LoginController {
 	
 	@Autowired
 	LoginService loginService;
+	
+	@GetMapping(path="/health/")
+	public HttpStatus isHealthy() {
+		return HttpStatus.OK;
+	}
 
 	@GetMapping ("/users/verified") 
 	@CrossOrigin(origins = "http://localhost:3000")
