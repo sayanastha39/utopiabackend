@@ -1,2 +1,3 @@
 #UtopiaAirlines 
-test
+ci test
+cd test
