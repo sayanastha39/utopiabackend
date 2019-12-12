@@ -2,4 +2,4 @@
 ci test
 cd test
 jenkins test
-test with frontend
+test with frontend using DNS
