@@ -23,10 +23,15 @@ public class LoginController {
 	
 	@Autowired
 	LoginService loginService;
+	
+	@GetMapping(path="/health/")
+	public HttpStatus isHealthy() {
+		return HttpStatus.OK;
+	}
 
 	@GetMapping ("/users/verified") 
 	@CrossOrigin(origins = "http://localhost:3000")
-	 @ResponseStatus(code = HttpStatus.OK)
+	//@ResponseStatus(code = HttpStatus.OK)
 		public HttpStatus verify(@RequestHeader ("username") String username, @RequestHeader ("password") String password) {
 				
 			User user = loginService.readUserbyUsername(username);

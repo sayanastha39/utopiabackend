@@ -28,6 +28,11 @@ public class LoginService {
 		 return userDao.findById(userId);
 	 }
 	 
+	//get user info
+		 public User readAllUsername(User user) {
+			 return userDao.findByUsername(user.getUsername());
+		 }
+		 
 	 
 	 //delete user info
 	 public void deleteUserbyId(Integer userId) {
