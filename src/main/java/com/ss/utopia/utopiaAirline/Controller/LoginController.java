@@ -33,13 +33,14 @@ public class LoginController {
 	@CrossOrigin(origins = "http://localhost:3000")
 	//@ResponseStatus(code = HttpStatus.OK)
 		public HttpStatus verify(@RequestHeader ("username") String username, @RequestHeader ("password") String password) {
+
 				
 			User user = loginService.readUserbyUsername(username);
 			
-			if(user.getPassword().equals(password)) {
-				return HttpStatus.OK;
+			if(user.getPassword().equals(password) ) {
+				return (HttpStatus.OK);
 			}
-			return HttpStatus.NOT_FOUND;
+			return  HttpStatus.NOT_FOUND;
 	}
 	
 	 @PostMapping("/users/create")
@@ -49,6 +50,5 @@ public class LoginController {
 		 loginService.createUser(user);
 			return  HttpStatus.CREATED;
 		}
-
 }
 
