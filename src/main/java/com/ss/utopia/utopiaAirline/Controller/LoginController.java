@@ -50,9 +50,4 @@ public class LoginController {
 		 loginService.createUser(user);
 			return  HttpStatus.CREATED;
 		}
-
 }
-
-
-}
-
