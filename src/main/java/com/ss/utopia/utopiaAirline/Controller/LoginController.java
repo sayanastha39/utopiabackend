@@ -2,7 +2,6 @@ package com.ss.utopia.utopiaAirline.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,14 +31,16 @@ public class LoginController {
 
 	@GetMapping ("/users/verified") 
 	@CrossOrigin(origins = "http://localhost:3000")
+	//@ResponseStatus(code = HttpStatus.OK)
 		public HttpStatus verify(@RequestHeader ("username") String username, @RequestHeader ("password") String password) {
+
 				
 			User user = loginService.readUserbyUsername(username);
 			
 			if(user.getPassword().equals(password) ) {
 				return (HttpStatus.OK);
 			}
-			return (HttpStatus.NOT_FOUND);
+			return  HttpStatus.NOT_FOUND;
 	}
 	
 	 @PostMapping("/users/create")
@@ -49,6 +50,9 @@ public class LoginController {
 		 loginService.createUser(user);
 			return  HttpStatus.CREATED;
 		}
+
+}
+
 
 }
 
