@@ -51,4 +51,3 @@ public class LoginController {
 			return  HttpStatus.CREATED;
 		}
 }
-
