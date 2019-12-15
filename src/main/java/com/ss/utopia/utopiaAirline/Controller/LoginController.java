@@ -24,7 +24,7 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
-	@GetMapping(path="/health/")
+	@GetMapping(path="/healthy/")
 	public HttpStatus isHealthy() {
 		return HttpStatus.OK;
 	}
