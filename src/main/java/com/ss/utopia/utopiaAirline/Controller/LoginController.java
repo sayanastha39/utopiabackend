@@ -28,10 +28,10 @@ public class LoginController {
 	public HttpStatus isHealthy() {
 		return HttpStatus.OK;
 	}
-
+	
 	@GetMapping ("/users/verified") 
-	@CrossOrigin(origins = "http://localhost:3000")
-	//@ResponseStatus(code = HttpStatus.OK)
+	@CrossOrigin(origins = "http://utopia-airlines.s3-website.us-east-2.amazonaws.com/#/")
+	
 		public HttpStatus verify(@RequestHeader ("username") String username, @RequestHeader ("password") String password) {
 
 				
@@ -44,7 +44,7 @@ public class LoginController {
 	}
 	
 	 @PostMapping("/users/create")
-	 @CrossOrigin(origins = "http://localhost:3000")
+	 @CrossOrigin(origins = "http://utopia-airlines.s3-website.us-east-2.amazonaws.com/#/")
 	 @ResponseStatus(code = HttpStatus.OK)
 		public HttpStatus createUser(@RequestBody User user) {
 		 loginService.createUser(user);
