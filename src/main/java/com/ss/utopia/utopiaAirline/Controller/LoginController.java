@@ -2,6 +2,7 @@ package com.ss.utopia.utopiaAirline.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,25 +30,26 @@ public class LoginController {
 		return HttpStatus.OK;
 	}
 	
-	@GetMapping ("/users/verified") 
-	@CrossOrigin(origins = "http://utopia-airlines.s3-website.us-east-2.amazonaws.com/#/")
-	
-		public HttpStatus verify(@RequestHeader ("username") String username, @RequestHeader ("password") String password) {
-
-				
-			User user = loginService.readUserbyUsername(username);
-			
-			if(user.getPassword().equals(password) ) {
-				return (HttpStatus.OK);
-			}
-			return  HttpStatus.NOT_FOUND;
-	}
-	
-	 @PostMapping("/users/create")
+	 @PostMapping("/users")
 	 @CrossOrigin(origins = "http://utopia-airlines.s3-website.us-east-2.amazonaws.com/#/")
 	 @ResponseStatus(code = HttpStatus.OK)
-		public HttpStatus createUser(@RequestBody User user) {
+		public ResponseEntity<String> createUser(@RequestBody User user) {
 		 loginService.createUser(user);
-			return  HttpStatus.CREATED;
+			return new ResponseEntity<String> ("User created" , HttpStatus.CREATED);
 		}
+	 
+	 @GetMapping ("/users") 
+	 @CrossOrigin(origins = "http://utopia-airlines.s3-website.us-east-2.amazonaws.com/#/")
+	 @ResponseStatus(code = HttpStatus.OK)
+		public ResponseEntity<?> readUser(@RequestHeader ("username") String username) {
+		 	
+		 	User user = loginService.readUserbyUsername(username);
+			User emptyUser = new User();
+		
+			if(user.getUsername().equals(username)) {
+				User userwdata =loginService.readUserbyUname(username);
+				return new ResponseEntity<User>(userwdata, HttpStatus.OK);
+			}
+			return new ResponseEntity<User>(emptyUser, HttpStatus.NOT_FOUND);
+	}
 }
