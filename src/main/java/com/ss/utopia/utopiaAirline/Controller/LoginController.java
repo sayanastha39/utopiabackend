@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+// @CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin
 @RestController 
 @Produces({"application/xml", "application/json"})
 @Consumes({"application/xml", "application/json"})
@@ -31,7 +32,7 @@ public class LoginController {
 	}
 	
 	 @PostMapping("/users")
-	 @CrossOrigin(origins = "http://localhost:3000")
+	// @CrossOrigin(origins = "http://localhost:3000")
 	 @ResponseStatus(code = HttpStatus.OK)
 		public ResponseEntity<String> createUser(@RequestBody User user) {
 		 loginService.createUser(user);
@@ -39,7 +40,7 @@ public class LoginController {
 		}
 	 
 	 @GetMapping ("/users") 
-	 @CrossOrigin(origins = "http://localhost:3000")
+	// @CrossOrigin(origins = "http://localhost:3000")
 	 @ResponseStatus(code = HttpStatus.OK)
 		public ResponseEntity<?> readUser(@RequestHeader ("username") String username) {
 		 	
