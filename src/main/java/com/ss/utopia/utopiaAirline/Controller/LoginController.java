@@ -32,9 +32,9 @@ public class LoginController {
 	}
 	
 	@GetMapping(path="/test/")
-		public String imTest() {
-			return ("Test is working");
-		}
+	public String imTest() {
+		return ("Test is working");
+	}
 	
 	 @PostMapping("/users")
 	// @CrossOrigin(origins = "http://localhost:3000")
