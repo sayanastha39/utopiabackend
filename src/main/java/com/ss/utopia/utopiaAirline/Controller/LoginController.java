@@ -31,7 +31,7 @@ public class LoginController {
 	}
 	
 	 @PostMapping("/users")
-	 @CrossOrigin(origins = "http://localhost:3000/#/")
+	 @CrossOrigin(origins = "http://localhost:3000")
 	 @ResponseStatus(code = HttpStatus.OK)
 		public ResponseEntity<String> createUser(@RequestBody User user) {
 		 loginService.createUser(user);
@@ -39,7 +39,7 @@ public class LoginController {
 		}
 	 
 	 @GetMapping ("/users") 
-	 @CrossOrigin(origins = "http://localhost:3000/#/")
+	 @CrossOrigin(origins = "http://localhost:3000")
 	 @ResponseStatus(code = HttpStatus.OK)
 		public ResponseEntity<?> readUser(@RequestHeader ("username") String username) {
 		 	
