@@ -31,6 +31,11 @@ public class LoginController {
 		return HttpStatus.OK;
 	}
 	
+	@GetMapping(path="/test/")
+		public String imTest() {
+			return ("Test is working");
+		}
+	
 	 @PostMapping("/users")
 	// @CrossOrigin(origins = "http://localhost:3000")
 	 @ResponseStatus(code = HttpStatus.OK)
