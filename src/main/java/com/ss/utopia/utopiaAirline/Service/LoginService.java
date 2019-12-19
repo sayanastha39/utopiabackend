@@ -23,10 +23,16 @@ public class LoginService {
 		 return userDao.findByUsername(username);
 	 }
 	 
+
 	 //get user info
 	 public Optional<User> readfortest(Integer userId) {
 		 return userDao.findById(userId);
 	 }
+	//get user info
+		 public User readUserbyUname(String username) {
+			 return userDao.findByUsername(username);
+		 }
+		 
 	 
 	//get user info
 		 public User readAllUsername(User user) {
@@ -67,6 +73,7 @@ public class LoginService {
 		
 		return unameExists;
 		}
+
 	
 	public boolean ifPasswordExists( String password) {
 		List<User> list = userDao.findAll();
@@ -77,4 +84,3 @@ public class LoginService {
 		return passExists;
 		}
 }
-
