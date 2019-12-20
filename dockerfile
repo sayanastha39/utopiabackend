@@ -1,6 +1,6 @@
 FROM openjdk:12-jdk-alpine
 VOLUME /tmp
-EXPOSE 8080
+EXPOSE 8090
 
 MAINTAINER sayana.shrestha@smoothstack.com
 
